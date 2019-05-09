@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 
 const courses = [
-  { id: 1, course: courseA },
-  { id: 2, course: courseB },
-  { id: 3, course: courseC }
+  { id: 1, name: "courseA" },
+  { id: 2, name: "courseB" },
+  { id: 3, name: "courseC" }
 ];
 app.get("/", (req, res) => {
   res.send("hello courses");
@@ -17,7 +17,8 @@ app.get("/api/courses", (req, res) => {
 //create single route
 app.get("/api/courses/:id", (req, res) => {
   const course = courses.find(c => c.id === parseInt(req.params.id));
-  res.send(req.query);
+  if (!course) res.status(404).send("the given id has not matched course");
+  res.send(course);
 });
 
 const port = process.env.port || 4040;
