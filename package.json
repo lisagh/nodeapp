@@ -1,0 +1,25 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "noteapp is a series of node.js app for beginners with the clear study note",
+  "main": "CallEvent.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemailer": "^6.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ththlisa/nodeapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ththlisa/nodeapp/issues"
+  },
+  "homepage": "https://github.com/ththlisa/nodeapp#readme"
+}
