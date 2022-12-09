@@ -4,7 +4,7 @@
   "description": "noteapp is a series of node.js app for beginners with the clear study note",
   "main": "CallEvent.js",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "joi": "^14.3.1",
     "mongodb": "^3.2.4",
     "nodemailer": "^6.1.1"
