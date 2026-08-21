@@ -63,12 +63,12 @@ const port = process.env.port || 4040;
 app.listen(port, () => console.log(`listen to port ${port}`));
 
 function ValidateCourse(course) {
-  const schema = {
+  const schema = Joi.object({
     name: Joi.string()
       .min(3)
       .required()
-  };
-  return Joi.validate(course, schema);
+  });
+  return schema.validate(course);
 }
 
 app.delete("/api/courses/:id", (req, res) => {

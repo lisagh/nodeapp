@@ -1,10 +1,11 @@
 var MongoClient = require("mongodb").MongoClient;
-MongoClient.connect(
-  "mongodb://localhost:27017/",
-  { useNewUrlParser: true },
-  function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
+
+async function main() {
+  const client = new MongoClient("mongodb://localhost:27017/");
+
+  try {
+    await client.connect();
+    var dbo = client.db("mydb");
     var myobj = [
       { name: "John", address: "Highway 71" },
       { name: "Peter", address: "Lowstreet 4" },
@@ -21,10 +22,13 @@ MongoClient.connect(
       { name: "Chuck", address: "Main Road 989" },
       { name: "Viola", address: "Sideway 1633" }
     ];
-    dbo.collection("customers").insertMany(myobj, function(err, res) {
-      if (err) throw err;
-      console.log("Number of documents inserted: " + res.insertedCount);
-      db.close();
-    });
+    const res = await dbo.collection("customers").insertMany(myobj);
+    console.log("Number of documents inserted: " + res.insertedCount);
+  } finally {
+    await client.close();
   }
-);
+}
+
+main().catch(function(err) {
+  console.log(err);
+});
